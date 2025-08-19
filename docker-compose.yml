@@ -3,7 +3,7 @@ version: "3"
 services:
 
   npm:
-    image: nginxproxymanager/nginx-proxy-manager:postgres
+    image: c21/nginx-proxy-manager:2
     container_name: nginx-proxy-manager
     restart: unless-stopped
     ports:
