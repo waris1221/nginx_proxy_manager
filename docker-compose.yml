@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+
+  npm:
+    image: nginxproxymanager/nginx-proxy-manager:postgres
+    container_name: nginx-proxy-manager
+    restart: unless-stopped
+    ports:
+      - "80:80"       # HTTP
+      - "443:443"     # HTTPS
+      - "81:81"       # Interface Admin
+    environment:
+      DB_TYPE: ${DB_TYPE}  # Type de base de données, ici PostgreSQL
+      DB_HOST: ${DB_HOST}       # l'adresse de ton serveur PostgreSQL
+      DB_PORT: ${DB_PORT}                     # port PostgreSQL
+      DB_USER: ${DB_USER}                 # utilisateur PostgreSQL pour NPM
+      DB_PASSWORD: ${DB_PASSWORD}         # mot de passe PostgreSQL
+      DB_NAME: ${DB_NAME}                   # base de données PostgreSQL pour NPM
+    volumes:
+      - ${NPM_WORK_DIR}/data:/data
+      - ${NPM_WORK_DIR}/letsencrypt:/etc/letsencrypt
+    networks:
+      - nexox
+    
+networks:
+  nexox:
+    driver: bridge
+    external: true
