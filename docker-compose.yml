@@ -22,11 +22,8 @@ services:
       - ${NPM_WORK_DIR}/letsencrypt:/etc/letsencrypt
     networks:
       - nexox
-      - mailcow-network
     
 networks:
   nexox:
     driver: bridge
-    external: true
-  mailcow-network:
     external: true
