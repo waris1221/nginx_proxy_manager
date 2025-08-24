@@ -22,11 +22,11 @@ services:
       - ${NPM_WORK_DIR}/letsencrypt:/etc/letsencrypt
     networks:
       - nexox
-      - mailcowdockerized_mailcow-network
+      - mailcow-network
     
 networks:
   nexox:
     driver: bridge
     external: true
-  mailcowdockerized_mailcow-network:
+  mailcow-network:
     external: true
