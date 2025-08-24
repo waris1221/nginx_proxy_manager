@@ -22,7 +22,7 @@ services:
       - ${NPM_WORK_DIR}/letsencrypt:/etc/letsencrypt
     networks:
       - nexox
-      - mailcowdockerized_mailcow-network
+      - mailcow-network
     
 networks:
   nexox:
